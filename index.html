@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="Description" content="Enter your description here" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Condensed&family=Square+Peg&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+  <title>WeatherDash</title>
+</head>
+
+<body>
+    <h1 class="display-1 max-width bg-dark text-white">WeatherDash</h1>
+    <div class="container-fluid p-3">
+     <div class="row justify-content-around">
+        <ul class="col-3">
+            <h2 class="display-4">Search for a City:</h2>
+            <div class="input-group">
+            <input class="form-control p-3 " type="text" placeholder="Type a City">
+            <button class="btn btn-primary btn-block mt-2">Search</button>
+            <div id='cityButtons' class="btn-block col">
+                <br>
+                <button class="btn btn-secondary btn-block mt-3">Search</button>
+                <button class="btn btn-secondary btn-block mt-2">Search</button>
+                <button class="btn btn-secondary btn-block mt-2">Search</button>
+                <button class="btn btn-secondary btn-block mt-2">Search</button>
+                <button class="btn btn-secondary btn-block mt-2">Search</button>
+                <button class="btn btn-secondary btn-block mt-2">Search</button>
+                <button class="btn btn-secondary btn-block mt-2">Search</button>
+            </div>
+        </ul>
+        <div id="weather" class="col-8 container-sm p-3 bg-primary border-radius-2">
+            <h2 class="display-4 border">Atlanta</h2>
+            <h3 value="temp">Temp: </h3>
+            <h3 value="wind">Wind: </h3>
+            <h3 value="humidity">Humidity: </h3>
+            <h3 value="uvindex">UV Index: </h3>
+            <div class="container row col-12 mt-5">
+                <h2>5 Day Forecast</h2>
+                <div class="row pl-3">
+                </div>     
+        </div>
+        <!-- <div class="container col-5 position-absolute ">
+            <h2>5 Day Forecast</h2>
+            <div class="row pl-3">
+            </div> 
+            </div>
+        </div> -->
+     </div>
+    </div>
+
+    <script src="/assets/script.js"></script>
+</body>
+
+</html>
