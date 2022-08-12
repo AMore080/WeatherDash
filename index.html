@@ -19,10 +19,11 @@
     <div class="container-fluid p-3">
      <div class="row justify-content-around">
         <ul class="col-3">
+            <form id="form-el">
             <h2 class="display-4">Search for a City:</h2>
             <div class="input-group">
-            <input class="form-control p-3 " type="text" placeholder="Type a City">
-            <button class="btn btn-primary btn-block mt-2">Search</button>
+            <input id="city" class="form-control p-3 " type="text" placeholder="Type a City">
+            <button id="search" value="click" class="btn btn-primary btn-block mt-2">Search</button>
             <div id='cityButtons' class="btn-block col">
                 <br>
                 <button class="btn btn-secondary btn-block mt-3">Search</button>
@@ -33,16 +34,19 @@
                 <button class="btn btn-secondary btn-block mt-2">Search</button>
                 <button class="btn btn-secondary btn-block mt-2">Search</button>
             </div>
+            </form>
         </ul>
         <div id="weather" class="col-8 container-sm p-3 bg-primary border-radius-2">
             <h2 class="display-4 border">Atlanta</h2>
-            <h3 value="temp">Temp: </h3>
-            <h3 value="wind">Wind: </h3>
-            <h3 value="humidity">Humidity: </h3>
-            <h3 value="uvindex">UV Index: </h3>
+            <h3 data-temp="temp">Temp: </h3>
+            <h3 data-wind="wind">Wind: </h3>
+            <h3 data-humidity="humidity">Humidity: </h3>
             <div class="container row col-12 mt-5">
                 <h2>5 Day Forecast</h2>
-                <div class="row pl-3">
+                <div id="forecast" class=" container row">
+                    <ul class="row pl-3">
+                        <li>box</li>
+                    </ul>
                 </div>     
         </div>
         <!-- <div class="container col-5 position-absolute ">
