@@ -1,7 +1,8 @@
 let searchForm = document.querySelector("#form-el");
 let weatherContainer = document.getElementById("#forecast");
+let cityInput = document.querySelector("#city").value.trim();
+let citiesHistory = []
 
-fetch 
 
 //Handle the input from the User
 function handleSearchFormSubmit(event){
@@ -15,6 +16,9 @@ function handleSearchFormSubmit(event){
         return;
     }
 
+
+
+    localStorage.setItem("cities", cityInput)
     console.log(searchInput)
     console.log(cityInput)
     handleWeatherInformation(cityInput);
@@ -45,7 +49,7 @@ function handleWeatherInformation(cityInput){
 function displayWeatherBlocks(data){
     for(let i = 0; i < 35; i += 7){
         let weatherBlock = document.getElementById('forecast')
-        weatherBlock.classList.add("d-flex", "container", "row", "justify-content-between");
+        weatherBlock.classList.add("d-flex", "container", "row", "justify-content-around");
 
         let dayBlock = document.createElement('ul');
         dayBlock.classList.add("container" ,"col" , "p-3");
@@ -54,6 +58,11 @@ function displayWeatherBlocks(data){
         let date = document.createElement('li');
         date.textContent = data[i].dt_txt;
         dayBlock.appendChild(date);
+
+        let icon = document.createElement('p')
+        icon.innerHTML = "<img src=http://openweathermap.org/img/wn/" + data[i].weather[0].icon + "@2x.png />";
+        dayBlock.appendChild(icon)
+
 
         // let icon = document.createElement('li');
         // icon.textContent = "Temperature: " + data[i].main.temp;
@@ -71,6 +80,9 @@ function displayWeatherBlocks(data){
         humidity.textContent = "Temperature: " + data[i].main.temp;
         dayBlock.appendChild(temperature);
 
-
+        if(cityInput != cityInput){
+            weatherBlock.remove;
+            handleWeatherInformation(cityInput);
+        }
     }
 }
