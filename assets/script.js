@@ -16,11 +16,13 @@ function handleSearchFormSubmit(event){
         return;
     }
 
+    citiesHistory.push(cityInput)
 
 
-    localStorage.setItem("cities", cityInput)
+    localStorage.setItem("citiesHistory", citiesHistory)
     console.log(searchInput)
     console.log(cityInput)
+    handleSearchHistory(citiesHistory)
     handleWeatherInformation(cityInput);
 }
 
@@ -46,13 +48,15 @@ function handleWeatherInformation(cityInput){
     
 }
 
+//Will build every part of the 5-day forecast container 
 function displayWeatherBlocks(data){
+
     for(let i = 0; i < 35; i += 7){
         let weatherBlock = document.getElementById('forecast')
-        weatherBlock.classList.add("d-flex", "container", "row", "justify-content-around");
+        weatherBlock.classList.add("d-flex", "row", "justify-content-around", "position-absolute" , "mt-5" , "ml-3");
 
         let dayBlock = document.createElement('ul');
-        dayBlock.classList.add("container" ,"col" , "p-3");
+        dayBlock.classList.add("container" ,"col" , "p-1", "h-auto", "w-auto", "justify-content-between");
         weatherBlock.appendChild(dayBlock);
 
         let date = document.createElement('li');
@@ -63,11 +67,6 @@ function displayWeatherBlocks(data){
         icon.innerHTML = "<img src=http://openweathermap.org/img/wn/" + data[i].weather[0].icon + "@2x.png />";
         dayBlock.appendChild(icon)
 
-
-        // let icon = document.createElement('li');
-        // icon.textContent = "Temperature: " + data[i].main.temp;
-        // dayBlock.appendChild(temperature);
-
         let temperature = document.createElement('li');
         temperature.textContent = "Temperature: " + data[i].main.temp + " F°";
         dayBlock.appendChild(temperature);
@@ -77,12 +76,25 @@ function displayWeatherBlocks(data){
         dayBlock.appendChild(wind);
 
         let humidity = document.createElement('li');
-        humidity.textContent = "Temperature: " + data[i].main.temp;
-        dayBlock.appendChild(temperature);
+        humidity.textContent = "Humidity: " + data[i].main.humidity;
+        dayBlock.appendChild(humidity);
 
-        if(cityInput != cityInput){
-            weatherBlock.remove;
-            handleWeatherInformation(cityInput);
-        }
+
     }
+
+
+}
+
+function handleSearchHistory(citiesHistory){
+
+        let historyButton = document.getElementById('cityButtons');
+        historyButton.classList.add("btn-block", "col");
+
+
+        let listHistory = document.createElement("button");
+        listHistory.classList.add("btn" ,"btn-secondary", "btn-block", "mt-2");
+            for(let i = 0; i < citiesHistory.length; i++){
+            listHistory.textContent = citiesHistory[i];
+            }
+        historyButton.appendChild(listHistory)
 }
