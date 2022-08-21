@@ -30,10 +30,12 @@
             </form>
         </ul>
         <div id="weather" class="col-8 container-sm p-3 rounded">
-            <h2 data-city="city" class="display-4 border">City<span data-icon="icon"></span></h2>
-            <h3 data-temp="temp">Temperature:</h3>
-            <h3 data-wind="wind">Wind:</h3>
-            <h3 data-humidity="humidity">Humidity:</h3>
+            <div id="weatherCity">
+                <h2 data-city="city" class="display-4 border">City<span data-icon="icon"></span></h2>
+                <h3 data-temp="temp">Temperature:</h3>
+                <h3 data-wind="wind">Wind:</h3>
+                <h3 data-humidity="humidity">Humidity:</h3>
+            </div>
             <div class="row col-12 mt-5">
                 <h2>5 Day Forecast</h2>
                     <div id="forecast">
@@ -45,6 +47,7 @@
      </div>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <script src="./assets/script.js"></script>
 </body>
 
