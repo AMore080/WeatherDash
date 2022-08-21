@@ -1,14 +1,12 @@
 let searchForm = document.querySelector("#form-el");
 let weatherHeader = document.querySelector("#weather");
 let weatherContainer = document.getElementById("#forecast");
+let weatherCityBox = document.querySelector('#weatherCity')
 let cityInput = document.querySelector("#city").value.trim();
 let citiesHistory = []
 
 
 
-function clearHTML(event){
-    weatherContainer.remove(event)
-}
 //Handle the input from the User
 function handleSearchFormSubmit(event){
     event.preventDefault();
@@ -16,7 +14,11 @@ function handleSearchFormSubmit(event){
     let searchInput = document.querySelector("#search").value.trim();
     let cityInput = document.querySelector("#city").value.trim();
 
-    citiesHistory.push(cityInput)
+    if(cityInput == ''){
+        return;
+    } else {
+        citiesHistory.push(cityInput)
+    }
 
     localStorage.setItem("citiesHistory", citiesHistory)
     console.log(searchInput)
@@ -26,7 +28,7 @@ function handleSearchFormSubmit(event){
 }
 
 //Listens for a submit when the form is completed and then runs handleSearch Function
-searchForm.addEventListener('submit',handleSearchFormSubmit,clearHTML);
+searchForm.addEventListener('submit',handleSearchFormSubmit);
 
 
 //Displays the weather Info based on the city input from the form submit
@@ -50,8 +52,7 @@ function handleWeatherInformation(cityInput){
 //Will build every part of the 5-day forecast container 
 function displayWeatherBlocks(data){
 
-
-
+    
     let city = document.querySelector('[data-city="city"]')
     for(let i = 0; i < citiesHistory.length; i++){
         city.textContent = citiesHistory[i]
@@ -74,13 +75,16 @@ function displayWeatherBlocks(data){
     humidity.textContent = "Humidity: " + (data[0].main.humidity) + "%"
     humidity.append
 
+
+    $('#forecast').empty();
     for(let i = 0; i < 35; i += 7){
+
         let weatherBlock = document.getElementById('forecast')
         weatherBlock.classList.add("d-flex", "row", "justify-content-around", "position-absolute" , "mt-5" , "ml-3");
-
+        
         let dayBlock = document.createElement('ul');
         dayBlock.classList.add("container" ,"col" , "p-1", "h-auto", "w-auto", "justify-content-between");
-        weatherBlock.append(dayBlock);
+        weatherBlock.appendChild(dayBlock);
 
         let date = document.createElement('li');
         date.textContent = data[i].dt_txt;
@@ -108,14 +112,22 @@ function displayWeatherBlocks(data){
 function handleSearchHistory(citiesHistory){
 
         let historyButton = document.getElementById('cityButtons');
+
+        console.log(citiesHistory)
+
         historyButton.classList.add("btn-block", "col");
-
-
         let listHistory = document.createElement("button");
+
         listHistory.classList.add("btn" ,"btn-secondary", "btn-block", "mt-2");
             for(let i = 0; i < citiesHistory.length; i++){
-            listHistory.textContent = citiesHistory[i];
-            console.log(citiesHistory[i])
-            }
+                listHistory.textContent = citiesHistory[i];
+                console.log(citiesHistory[i])
+                listHistory.addEventListener("click",function(){
+                    handleWeatherInformation(citiesHistory[i])
+                })
+                }
         historyButton.appendChild(listHistory)
-}
+
+
+    }
+
