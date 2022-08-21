@@ -12,8 +12,3 @@ A basic application that will display a 5-day forecast based on a user input of 
 - Built using the CSS framework "Bootstrap"
 - Written in vanilla Javascript to "fetch" information from the API
 - OpenWeather API used to supply information of weather for the user 
-
-#Links
-Link to deployed application: 
-
-# Contributions
